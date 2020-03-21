@@ -14,11 +14,14 @@ namespace Ahorcado
     public partial class Form1 : Form
     {
 
-        String palabraOculta = "CETYS";
+        String palabraOculta = "";
+        String aux = "";
 
         int numeroFallos = 0;
 
         Boolean acierto = false;
+
+
 
         ArrayList botonesPulsados = new ArrayList();//almaceno todos los botones pulsados
 
@@ -36,7 +39,7 @@ namespace Ahorcado
             String letra = boton.Text;
 
             
-            if (numeroFallos <= palabraOculta.Length-1)
+            if (numeroFallos <= palabraOculta.Length)
             {
                 if (palabraOculta.Contains(letra))
                 {
@@ -88,7 +91,12 @@ namespace Ahorcado
 
                 botonReinicio.Visible = false;
 
-                label1.Text = "_ _ _ _ _";
+                label1.Text = "";
+
+                for (int i = 0; i < palabraOculta.Length; i++)
+                {
+                    label1.Text = label1.Text + "_ ";
+                }
 
                 pictureBox1.Image = Properties.Resources.ahorcado_0;
             }
@@ -99,7 +107,12 @@ namespace Ahorcado
                 acierto = false;
                 botonReinicio.Visible = false;
 
-                label1.Text = "_ _ _ _ _";
+                label1.Text = "";
+
+                for (int i = 0; i < palabraOculta.Length; i++)
+                {
+                    label1.Text = label1.Text + "_ ";
+                }
 
                 pictureBox1.Image = Properties.Resources.ahorcado_0;
 
@@ -109,6 +122,18 @@ namespace Ahorcado
                 }
 
                 botonesPulsados.Clear();//dejo vacio el ArrayList
+
+                
+            }
+        }
+
+        private void texto(object sender, EventArgs e)
+        {
+            label2.Text = palabraOculta;
+
+            for (int i = 0; i < palabraOculta.Length; i++)
+            {
+                label1.Text = label1.Text + "_ ";
             }
         }
     }
