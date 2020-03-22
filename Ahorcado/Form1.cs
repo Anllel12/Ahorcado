@@ -13,9 +13,7 @@ namespace Ahorcado
 {
     public partial class Form1 : Form
     {
-
         String palabraOculta = "";
-        String aux = "";
 
         int numeroFallos = 0;
 
@@ -37,8 +35,7 @@ namespace Ahorcado
             botonesPulsados.Add(boton);//lo añado al arrayList para más adelante
 
             String letra = boton.Text;
-
-            
+           
             if (numeroFallos <= palabraOculta.Length)
             {
                 if (palabraOculta.Contains(letra))
@@ -53,12 +50,12 @@ namespace Ahorcado
                     boton.Visible = false;//quito el boton
                 }
             }
+
             else
             {
                 botonReinicio.Visible = true;
             }
-            
-            
+                       
             if (!label1.Text.Contains("_"))
             {
                 pictureBox1.Image = Properties.Resources.acertastetodo;
@@ -100,6 +97,7 @@ namespace Ahorcado
 
                 pictureBox1.Image = Properties.Resources.ahorcado_0;
             }
+
             else//si la han averiguado reiniciamos 
             {
                 numeroFallos = 0;
@@ -131,7 +129,7 @@ namespace Ahorcado
         {
             label2.Text = palabraOculta;
 
-            for (int i = 0; i < palabraOculta.Length; i++)
+            for (int i = 0; i < palabraOculta.Length; i++)//pone "_ " segun el tamaño de la palabra
             {
                 label1.Text = label1.Text + "_ ";
             }
